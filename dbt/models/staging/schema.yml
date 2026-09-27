@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: stg_events
+    columns:
+      - name: event_id
+        tests:
+          - unique
+          - not_null
+      - name: event_type
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['view', 'cart', 'remove_from_cart', 'purchase']
+      - name: price
+        tests:
+          - not_null
+      - name: user_id
+        tests:
+          - not_null
